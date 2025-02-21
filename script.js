@@ -28,7 +28,7 @@ function preload() {
 
 function create() {
     const background = [];
-    for (let i = 0; i < 100; i++) {
+    for (let i = 0; i < 200; i++) {  // Aumentar el número de fondos para duplicar el camino
         background.push(this.add.sprite(0, config.height, 'background').setOrigin(1, 1).setScale(1.1));
     }
     Phaser.Actions.AlignTo(background, Phaser.Display.Align.RIGHT_BOTTOM);
@@ -37,7 +37,7 @@ function create() {
         .setCollideWorldBounds(true)
         .setScale(.05);
 
-    for (let i = 1; i < 100; i++) {
+    for (let i = 1; i < 200; i++) {  // Aumentar el número de tuberías para duplicar el camino
         this.pipeDown = this.physics.add.staticImage(1000 * (i / 2), config.height, 'pipe')
             .setOrigin(1, 1)
             .setScale(.5)
@@ -61,21 +61,26 @@ function create() {
 
     this.cameras.main.startFollow(this.bird);
 
-    this.cameras.main.setBounds(0, 0, 5000, config.height);
-    this.physics.world.setBounds(0, 0, 5000, config.height);
+    this.cameras.main.setBounds(0, 0, 10000, config.height);  // Duplicar el tamaño del escenario
+    this.physics.world.setBounds(0, 0, 10000, config.height);
 
     this.bird.setVelocityX(120);
+
+    this.input.on('pointerdown', function (pointer) {
+        this.bird.setVelocityY(-250);  // Mover el pajarito al hacer clic
+    }, this);
 
     // Trigger the questions after certain intervals
     this.time.delayedCall(5000, showQuestion1, [], this);
     this.time.delayedCall(10000, showQuestion2, [], this);
     this.time.delayedCall(15000, showQuestion3, [], this);
+    this.time.delayedCall(18000, showQuestion4, [], this);
 }
 
 function update() {
     if (this.hitBird) { return }
     this.bird.rotation = this.bird.body.angle;
-    if (this.cursors.up.isDown) {
+    if (this.cursors.up.isDown || this.keys.W.isDown) {
         this.bird.setVelocityY(-250);
     }
 }
@@ -114,7 +119,7 @@ function showQuestion2() {
     const answer = prompt(question);
 
     if (answer === '1') {
-        this.bird.setVelocityX(180); // Increase speed and continue the game
+        this.bird.setVelocityX(220); // Increase speed and continue the game
     } else {
         this.scene.restart(); // Restart the game
     }
@@ -127,7 +132,20 @@ function showQuestion3() {
     const answer = prompt(question);
 
     if (answer === '1') {
-        this.bird.setVelocityX(210); // Increase speed and continue the game
+        this.bird.setVelocityX(280); // Increase speed and continue the game
+    } else {
+        this.scene.restart(); // Restart the game
+    }
+}
+
+function showQuestion4() {
+    this.bird.setVelocityX(0); // Pause the game while answering the question
+
+    const question = '¿Qué estructura celular controla la actividad de la célula?\n1. Núcleo\n2. Lisosoma';
+    const answer = prompt(question);
+
+    if (answer === '2') {
+        this.bird.setVelocityX(350); // Increase speed and continue the game
     } else {
         this.scene.restart(); // Restart the game
     }
