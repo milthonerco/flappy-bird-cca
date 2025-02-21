@@ -1,6 +1,6 @@
 const config = {
-    width: 500,
-    height: 500,
+    width: innerWidth,
+    height: innerHeight,
     type: Phaser.AUTO,
     parent: 'game',
     backgroundColor: '#000000',
@@ -22,16 +22,22 @@ new Phaser.Game(config);
 
 function preload() {
     this.load.image("bird", "./bird.png");
-    this.load.image("background", "./Diseño sin título (3).png");
+    this.load.image("background", "./Diseño sin titulo (3).png");
+    this.load.image("backgroundMiddle", "./Diseño sin titulo (5).png");
+    this.load.image("backgroundFinal", "./Diseño sin titulo (6).png");
     this.load.image("pipe", "./Diseño sin título (4).png");
 }
 
 function create() {
     const background = [];
-    for (let i = 0; i < 200; i++) {  // Aumentar el número de fondos para duplicar el camino
-        background.push(this.add.sprite(0, config.height, 'background').setOrigin(1, 1).setScale(1.1));
+    background.push(this.add.sprite(1920, config.height, 'background').setOrigin(1, 1).setScale(1));
+    
+    for (let i = 0; i < 10; i++) {  // Aumentar el número de fondos para duplicar el camino
+        background.push(this.add.sprite(0, config.height, 'backgroundMiddle').setOrigin(1, 1).setScale(1));
     }
-    Phaser.Actions.AlignTo(background, Phaser.Display.Align.RIGHT_BOTTOM);
+    background.push(this.add.sprite(1920, config.height, 'backgroundFinal').setOrigin(1, 1).setScale(1));
+    
+    Phaser.Actions.AlignTo(background, Phaser.Display.Align.RIGHT_CENTER);
 
     this.bird = this.physics.add.image(config.width / 2, config.height / 2, "bird")
         .setCollideWorldBounds(true)
@@ -40,17 +46,17 @@ function create() {
     for (let i = 1; i < 200; i++) {  // Aumentar el número de tuberías para duplicar el camino
         this.pipeDown = this.physics.add.staticImage(1000 * (i / 2), config.height, 'pipe')
             .setOrigin(1, 1)
-            .setScale(.5)
+            .setScale(.85)
             .refreshBody();
         this.pipeUp = this.physics.add.staticImage(1000 * (i / 2), 0, 'pipe')
             .setOrigin(1, 1)
-            .setScale(.5)
+            .setScale(.85)
             .setAngle(180)
             .refreshBody();
 
         this.hitBird = false;
 
-        this.pipeUp.body.setOffset(-this.pipeUp.width / 2, -this.pipeUp.height / 2);
+        this.pipeUp.body.setOffset(-this.pipeUp.width / 1.18, -this.pipeUp.height / 1.18);
 
         this.physics.add.collider(this.pipeUp, this.bird, handleHit, null, this);
         this.physics.add.collider(this.pipeDown, this.bird, handleHit, null, this);
