@@ -144,7 +144,7 @@ function showQuestion3() {
     const question = '¿En qué departamento colombiano el inglés es una lengua oficial?\n1. Santa Marta\n2. San Andrés';
     const answer = prompt(question);
 
-    if (answer === '1') {
+    if (answer === '2') {
         this.bird.setVelocityX(280); // Increase speed and continue the game
     } else {
         this.scene.restart(); // Restart the game
