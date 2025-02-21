@@ -22,8 +22,8 @@ new Phaser.Game(config);
 
 function preload() {
     this.load.image("bird", "./bird.png");
-    this.load.image("background", "./background.jpg");
-    this.load.image("pipe", "./pipe.png");
+    this.load.image("background", "./Diseño sin título (3).png");
+    this.load.image("pipe", "./Diseño sin título (4).png");
 }
 
 function create() {
