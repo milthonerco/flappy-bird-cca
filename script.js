@@ -70,6 +70,13 @@ function create() {
     this.time.delayedCall(5000, showQuestion1, [], this);
     this.time.delayedCall(10000, showQuestion2, [], this);
     this.time.delayedCall(15000, showQuestion3, [], this);
+    this.time.delayedCall(20000, showQuestion4, [], this);
+    this.time.delayedCall(25000, showQuestion5, [], this);
+    this.time.delayedCall(30000, showQuestion6, [], this);
+    this.time.delayedCall(35000, showQuestion7, [], this);
+    this.time.delayedCall(40000, showQuestion8, [], this);
+    this.time.delayedCall(45000, showQuestion9, [], this);
+    this.time.delayedCall(50000, showQuestion10, [], this);
 }
 
 function update() {
@@ -97,7 +104,7 @@ function handleHit() {
 function showQuestion1() {
     this.bird.setVelocityX(0); // Pause the game while answering the question
 
-    const question = '¿Qué orgánulo se encarga de la respiración celular?\n1. Mitocondria\n2. Ribosoma';
+    const question = '¿Con qué país centroamericano Colombia comparte frontera marítima y terrestre?\n1. Panamá\n2. México';
     const answer = prompt(question);
 
     if (answer === '1') {
@@ -110,7 +117,7 @@ function showQuestion1() {
 function showQuestion2() {
     this.bird.setVelocityX(0); // Pause the game while answering the question
 
-    const question = '¿Cuál es la función de los ribosomas?\n1. Síntesis de proteínas\n2. Transporte de lípidos';
+    const question = '¿Cuál es la montaña costera más alta del mundo?\n1. Sierra Nevada de Santa Marta\n2. Nevado del Ruiz';
     const answer = prompt(question);
 
     if (answer === '1') {
@@ -123,11 +130,104 @@ function showQuestion2() {
 function showQuestion3() {
     this.bird.setVelocityX(0); // Pause the game while answering the question
 
-    const question = '¿Qué estructura celular controla la actividad de la célula?\n1. Núcleo\n2. Lisosoma';
+    const question = '¿En qué departamento colombiano el inglés es una lengua oficial?\n1. Santa Marta\n2. San Andrés';
+    const answer = prompt(question);
+
+    if (answer === '2') {
+        this.bird.setVelocityX(210); // Increase speed and continue the game
+    } else {
+        this.scene.restart(); // Restart the game
+    }
+}
+
+function showQuestion4() {
+    this.bird.setVelocityX(0); // Pause the game while answering the question
+
+    const question = '¿Qué prócer de la independencia de Colombia es conocido como “el hombre de las leyes”?\n1. Francisco de Paula Santander\n2. Simon Bolivar';
     const answer = prompt(question);
 
     if (answer === '1') {
-        this.bird.setVelocityX(210); // Increase speed and continue the game
+        this.bird.setVelocityX(240); // Increase speed and continue the game
+    } else {
+        this.scene.restart(); // Restart the game
+    }
+}
+
+function showQuestion5() {
+    this.bird.setVelocityX(0); // Pause the game while answering the question
+
+    const question = '¿En qué año se promulgó la actual constitución política de Colombia?\n1. 1991\n2. 1992';
+    const answer = prompt(question);
+
+    if (answer === '1') {
+        this.bird.setVelocityX(270); // Increase speed and continue the game
+    } else {
+        this.scene.restart(); // Restart the game
+    }
+}
+
+function showQuestion6() {
+    this.bird.setVelocityX(0); // Pause the game while answering the question
+
+    const question = '¿Cuál es la etnia indígena más numerosa de Colombia?\n1. Arhuacos\n2. Wayuu';
+    const answer = prompt(question);
+
+    if (answer === '2') {
+        this.bird.setVelocityX(300); // Increase speed and continue the game
+    } else {
+        this.scene.restart(); // Restart the game
+    }
+}
+
+
+function showQuestion7() {
+    this.bird.setVelocityX(0); // Pause the game while answering the question
+
+    const question = '¿En qué año la Selección Colombia logró su histórica victoria 5-0 contra Argentina?\n1. 1993\n2. 1995';
+    const answer = prompt(question);
+
+    if (answer === '1') {
+        this.bird.setVelocityX(330); // Increase speed and continue the game
+    } else {
+        this.scene.restart(); // Restart the game
+    }
+}
+
+
+function showQuestion8() {
+    this.bird.setVelocityX(0); // Pause the game while answering the question
+
+    const question = '¿En qué fecha ocurrió el Grito de Independencia?\n1. 20 de julio de 1810\n2. 20 de julio de 1820';
+    const answer = prompt(question);
+
+    if (answer === '1') {
+        this.bird.setVelocityX(360); // Increase speed and continue the game
+    } else {
+        this.scene.restart(); // Restart the game
+    }
+}
+
+function showQuestion9() {
+    this.bird.setVelocityX(0); // Pause the game while answering the question
+
+    const question = '¿Qué departamento tiene más parques naturales en Colombia?\n1. Amazonas\n2. Meta';
+    const answer = prompt(question);
+
+    if (answer === '2') {
+        this.bird.setVelocityX(390); // Increase speed and continue the game
+    } else {
+        this.scene.restart(); // Restart the game
+    }
+}
+
+function showQuestion10() {
+    this.bird.setVelocityX(0); // Pause the game while answering the question
+
+    const question = 'Estas islas le pertenecen al departamento del Cauca\n1. Isla Gorgona y Mompox\n2. Isla Gorgona e Isla Gorgonilla';
+    const answer = prompt(question);
+
+    if (answer === '2') {
+        this.bird.setVelocityX(420); // Increase speed and continue the game
     } else {
         this.scene.restart(); // Restart the game
     }
